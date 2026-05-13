@@ -1,13 +1,14 @@
 NAME = find
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
+CXXFLAGS= -std=c++98 -Wall -Wextra -Werror
 CXX = c++
 RM = rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	$(RM) $(OBJS)
@@ -15,6 +16,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: clean all
+re: clean fclean all
 
-.PHONY: all clean re
+.PHONY: all clean re fclean
